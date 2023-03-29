@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CoursesActivity">
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewCoursesList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingBottom="12dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewYourCoursesTitle" />
+
+
+    <TextView
+        android:id="@+id/textViewEmptyCoursesList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/courses_page_empty_courselist"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/recyclerViewCoursesList"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerViewCoursesList"
+        app:layout_constraintStart_toStartOf="@+id/recyclerViewCoursesList"
+        app:layout_constraintTop_toTopOf="@+id/recyclerViewCoursesList" />
+
+    <fragment
+        android:id="@+id/youtubePlayerViewVideoOfTheDay"
+        android:name="com.google.android.youtube.player.YouTubePlayerFragment"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="12dp"
+        app:layout_constraintBottom_toTopOf="@id/textViewYourCoursesTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="Instantiatable" />
+
+    <TextView
+        android:id="@+id/textViewYourCoursesTitle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="12dp"
+        android:autoSizeMaxTextSize="32sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:gravity="start"
+        android:lines="1"
+        android:text="@string/courses_list_header"
+        android:textColor="?attr/textAppearanceHeadline1"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewCoursesList"
+        app:layout_constraintDimensionRatio="12:1"
+        app:layout_constraintTop_toBottomOf="@+id/youtubePlayerViewVideoOfTheDay" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

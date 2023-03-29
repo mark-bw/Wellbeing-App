@@ -1,0 +1,69 @@
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+
+      - name: Run lint
+        run: ./gradlew lintDebug
+
+      - name: Upload lint report
+        uses: actions/upload-artifact@v2
+        with:
+          name: lint_report
+          path: app/build/reports/lint-results-debug.html
+
+  unit-test:
+    needs: [ lint ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+
+      - name: Run tests
+        run: ./gradlew test
+
+      - name: Upload test report
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: unit_test_report
+          path: app/build/reports/tests/testDebugUnitTest/
+
+  instrumentation-test:
+    needs: [ unit-test ]
+    runs-on: macos-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+
+      - name: set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+          cache: gradle
+
+      - name: Run instrument tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          script: ./gradlew jacocoTestReport
+
+      - name: Upload test report
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: instrumentation_test_report
+          path: app/build/reports/androidTests/connected/
+
+      - name: Upload code coverage
+        uses: actions/upload-artifact@v2
+        with:
+          name: code_coverage
+          path: app/build/reports/jacoco/jacocoTestReport/html

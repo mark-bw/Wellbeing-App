@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="16dp">
+
+
+    <!-- Buttons -->
+
+    <TextView
+        android:id="@+id/textViewMoodTrackerPrompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:text="@string/mood_tracker_rating_prompt"
+        android:textAppearance="?attr/textAppearanceHeadline6" />
+
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/moodToggleGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:selectionRequired="true"
+        app:singleSelection="true">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/dialogButtonSadFace"
+            style="?attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@string/mood_tracker_sad_icon_content_description"
+            android:padding="0dp"
+            app:icon="@drawable/ic_sad"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/dialogButtonNeutralFace"
+            style="?attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@string/mood_tracker_neutral_icon_content_description"
+            android:padding="0dp"
+            app:icon="@drawable/ic_neutral"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/dialogButtonHappyFace"
+            style="?attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/mood_tracker_happy_icon_content_description"
+            android:padding="0dp"
+            app:icon="@drawable/ic_smile"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp" />
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    <EditText
+        android:id="@+id/editTextDialogUserInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="@string/mood_tracker_add_notes"
+        android:importantForAutofill="no"
+        android:inputType="textLongMessage"
+        android:minHeight="48dp"
+        android:singleLine="false">
+
+        <requestFocus />
+
+    </EditText>
+
+</LinearLayout>
+</ScrollView>

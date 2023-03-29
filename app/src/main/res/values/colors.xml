@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Applied base theme colors to get variants: https://materialtheme.arcsine.dev/ -->
+    <color name="sls_teal">#FF00A995</color>
+    <color name="sls_teal_light">#FFB3E5DF</color>
+    <color name="sls_teal_dark">#FF008F78</color>
+    <color name="sls_green">#FF00A651</color>
+    <color name="sls_green_light">#FFB3E4CB</color>
+    <color name="sls_green_dark">#FF008B37</color>
+    <color name="sls_lime">#FFA6CE39</color>
+    <color name="sls_lime_light">#FFE4f0C4</color>
+    <color name="sls_lime_dark">#FF8BBC24</color>
+    <!-- Original values -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="darkGrey">#FF3D3D3D</color>
+    <color name="medGrey">#FF7f7f7f</color>
+    <color name="lightGrey">#FFC1C1C1</color>
+</resources>

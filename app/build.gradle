@@ -1,0 +1,112 @@
+plugins {
+    id 'com.android.application'
+    id 'jacoco'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.sociallaboursupply.sls_wellbeing_app"
+        minSdkVersion 26
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            testCoverageEnabled = true
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    testOptions {
+//        execution 'ANDROID_TEST_ORCHESTRATOR'
+        animationsDisabled true
+
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+}
+
+dependencies {
+
+    // androidx
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
+    implementation 'androidx.annotation:annotation:1.2.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
+
+    // google
+    implementation 'com.google.android.material:material:1.4.0'
+
+    // github
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    // files
+    implementation files('libs/YouTubeAndroidPlayerApi.jar')
+
+    // junit
+    testImplementation 'junit:junit:4.13.2'
+
+    // Espresso
+    def androidx_test_espresso = "3.4.0"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidx_test_espresso"
+
+    // androidx.test
+    def androidx_test = "1.4.0"
+    androidTestImplementation "androidx.test:runner:$androidx_test"
+    androidTestImplementation "androidx.test:core:$androidx_test"
+    androidTestImplementation "androidx.test.ext:junit:1.1.3"
+}
+
+// testing coverage reportrs
+
+jacoco {
+    toolVersion = '$jacocoVersion'
+}
+
+tasks.withType(Test) {
+    jacoco {
+        includeNoLocationClasses = true
+        excludes = ['jdk.internal.*'] // Allows it to run on Java 11
+    }
+}
+
+task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'createDebugCoverageReport']) {
+
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+
+    def fileFilter = ['**/R.class', '**/R$*.class', '**/BuildConfig.*', '**/Manifest*.*', '**/*Test*.*', 'android/**/*.*',
+                      '**/com/example/generated/callback/*', '**/com/sociallaboursupply/sls_wellbeing_app/databinding/*']
+    def debugTree = fileTree(dir: "$project.buildDir/intermediates/javac/debug", excludes: fileFilter)
+    def mainSrc = "$project.projectDir/src/main/java"
+
+    sourceDirectories.setFrom(files([mainSrc]))
+    classDirectories.setFrom(files([debugTree]))
+    executionData.setFrom(fileTree(dir: project.buildDir, includes: [
+            'outputs/unit_test_code_coverage/debugUnitTest/testDebugUnitTest.exec', 'outputs/code_coverage/debugAndroidTest/connected/**/*.ec'
+    ]))
+}
+

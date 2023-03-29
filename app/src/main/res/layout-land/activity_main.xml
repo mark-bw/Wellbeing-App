@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".MainActivity">
+
+        <TextView
+            android:id="@+id/textViewHomePageTitle"
+            android:layout_width="254dp"
+            android:layout_height="178dp"
+            android:gravity="center"
+            android:text="@string/home_page_header"
+            android:textColor="#000000"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.123"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.068"
+            tools:text="Kia Ora" />
+
+        <Button
+            android:id="@+id/button_tasks"
+            android:layout_width="152dp"
+            android:layout_height="71dp"
+            android:text="@string/button_Tasks_To_Do"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.518"
+            app:layout_constraintStart_toEndOf="@+id/textViewHomePageTitle"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button_help"
+            android:layout_width="152dp"
+            android:layout_height="71dp"
+            android:layout_marginTop="52dp"
+            android:text="@string/button_need_help"
+            app:layout_constraintEnd_toEndOf="@+id/button_tasks"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="@+id/button_tasks"
+            app:layout_constraintTop_toBottomOf="@+id/button_tasks" />
+
+        <Button
+            android:id="@+id/button_moodTracker"
+            android:layout_width="152dp"
+            android:layout_height="71dp"
+            android:layout_marginBottom="52dp"
+            android:text="@string/button_mood_tracker"
+            app:layout_constraintBottom_toTopOf="@+id/button_tasks"
+            app:layout_constraintEnd_toEndOf="@+id/button_tasks"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="@+id/button_tasks" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="255dp"
+            android:layout_height="164dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/textViewHomePageTitle"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textViewHomePageTitle"
+            app:layout_constraintTop_toBottomOf="@+id/textViewHomePageTitle"
+            app:layout_constraintVertical_bias="0.352"
+            app:srcCompat="@drawable/sls_logo" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

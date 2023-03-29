@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="16dp">
+
+
+    <!-- Buttons -->
+
+    <TextView
+        android:id="@+id/textViewMoodTrackerPrompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:text="Add Task"
+        android:textAppearance="?attr/textAppearanceHeadline6" />
+
+    <EditText
+        android:id="@+id/addTaskTitleEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Task title"
+        android:importantForAutofill="no"
+        android:inputType="textShortMessage"
+        android:minHeight="48dp"
+        android:singleLine="true">
+        <requestFocus />
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/addTaskDescEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Additional notes about the task"
+        android:importantForAutofill="no"
+        android:inputType="textLongMessage"
+        android:minHeight="48dp"
+        android:singleLine="false">
+    </EditText>
+
+
+</LinearLayout>
